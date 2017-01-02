@@ -1,0 +1,17 @@
+{
+    "name": "boxspaced/cms-block-module",
+    "require": {
+
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Block\\": "src/"
+        }
+    },
+    "config": {
+        "bin-dir": "bin/",
+        "process-timeout": 1200
+    }
+}
