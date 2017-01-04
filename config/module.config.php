@@ -6,6 +6,7 @@ use Boxspaced\EntityManager\Mapper\Conditions\Conditions;
 use Zend\Router\Http\Segment;
 use Core\Model\RepositoryFactory;
 use Account\Model\User;
+use Zend\Permissions\Acl\Acl;
 
 return [
     'router' => [
@@ -26,6 +27,35 @@ return [
                 ],
             ],
             // LIFO
+        ],
+    ],
+    'acl' => [
+        'resources' => [
+            [
+                'id' => Controller\BlockController::class,
+            ],
+        ],
+        'rules' => [
+            [
+                'type' => Acl::TYPE_ALLOW,
+                'roles' => 'author',
+                'resources' => Controller\BlockController::class,
+                'privileges' => [
+                    'create',
+                    'edit',
+                    'index',
+                ],
+            ],
+            [
+                'type' => Acl::TYPE_ALLOW,
+                'roles' => 'publisher',
+                'resources' => Controller\BlockController::class,
+                'privileges' => [
+                    'publish',
+                    'delete',
+                    'publish-update',
+                ],
+            ],
         ],
     ],
     'service_manager' => [
