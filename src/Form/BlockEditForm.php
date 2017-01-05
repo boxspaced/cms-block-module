@@ -43,7 +43,7 @@ class BlockEditForm extends Form
         $this->add($element);
 
         $fieldsetClass = StaticFilter::execute($this->getName(), Filter\Word\DashToCamelCase::class);
-        $fieldsetClass = sprintf('%s\%sBlockFieldset', __NAMESPACE__, $fieldsetClass);
+        $fieldsetClass = sprintf('Application\\Form\\%sBlockFieldset', $fieldsetClass);
 
         if (class_exists($fieldsetClass)) {
             $this->add(new $fieldsetClass('fields'));
