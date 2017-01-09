@@ -2,7 +2,7 @@
 namespace Block;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManager\Mapper\Conditions\Conditions;
+use Boxspaced\EntityManager\Mapper\Conditions;
 use Zend\Router\Http\Segment;
 use Core\Model\RepositoryFactory;
 use Account\Model\User;
@@ -91,7 +91,7 @@ return [
                     'params' => [
                         'table' => 'block',
                         'columns' => [
-                            'versionOf' => 'version_of_id',
+                            'version_of' => 'version_of_id',
                             'type' => 'type_id',
                             'author' => 'author_id',
                             'template' => 'template_id',
@@ -106,31 +106,31 @@ return [
                         'name' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'liveFrom' => [
+                        'live_from' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'expiresEnd' => [
+                        'expires_end' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'workflowStage' => [
+                        'workflow_stage' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
                         'status' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'authoredTime' => [
+                        'authored_time' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'lastModifiedTime' => [
+                        'last_modified_time' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'publishedTime' => [
+                        'published_time' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'rollbackStopPoint' => [
+                        'rollback_stop_point' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'versionOf' => [
+                        'version_of' => [
                             'type' => Model\Block::class,
                         ],
                         'type' => [
@@ -143,19 +143,19 @@ return [
                             'type' => Model\BlockTemplate::class,
                         ],
                     ],
-                    'children' => [
+                    'one_to_many' => [
                         'fields' => [
                             'type' => Model\BlockField::class,
                             'conditions' => function ($id) {
                                 return (new Conditions())
-                                        ->field('parentBlock.id')->eq($id);
+                                        ->field('parent_block.id')->eq($id);
                             },
                         ],
                         'notes' => [
                             'type' => Model\BlockNote::class,
                             'conditions' => function ($id) {
                                 return (new Conditions())
-                                        ->field('parentBlock.id')->eq($id);
+                                        ->field('parent_block.id')->eq($id);
                             },
                         ],
                     ],
@@ -182,12 +182,12 @@ return [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
                     ],
-                    'children' => [
+                    'one_to_many' => [
                         'templates' => [
                             'type' => Model\BlockTemplate::class,
                             'conditions' => function ($id) {
                                 return (new Conditions())
-                                        ->field('forType.id')->eq($id);
+                                        ->field('for_type.id')->eq($id);
                             },
                         ],
                     ],
@@ -198,7 +198,7 @@ return [
                     'params' => [
                         'table' => 'block_field',
                         'columns' => [
-                            'parentBlock' => 'block_id',
+                            'parent_block' => 'block_id',
                         ],
                     ],
                 ],
@@ -213,7 +213,7 @@ return [
                         'value' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'parentBlock' => [
+                        'parent_block' => [
                             'type' => Model\Block::class,
                         ],
                     ],
@@ -224,7 +224,7 @@ return [
                     'params' => [
                         'table' => 'block_note',
                         'columns' => [
-                            'parentBlock' => 'block_id',
+                            'parent_block' => 'block_id',
                             'user' => 'user_id',
                         ],
                     ],
@@ -237,10 +237,10 @@ return [
                         'text' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'createdTime' => [
+                        'created_time' => [
                             'type' => AbstractEntity::TYPE_DATETIME,
                         ],
-                        'parentBlock' => [
+                        'parent_block' => [
                             'type' => Model\Block::class,
                         ],
                         'user' => [
@@ -254,7 +254,7 @@ return [
                     'params' => [
                         'table' => 'block_template',
                         'columns' => [
-                            'forType' => 'for_type_id',
+                            'for_type' => 'for_type_id',
                         ],
                     ],
                 ],
@@ -266,13 +266,13 @@ return [
                         'name' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'viewScript' => [
+                        'view_script' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
                         'description' => [
                             'type' => AbstractEntity::TYPE_STRING,
                         ],
-                        'forType' => [
+                        'for_type' => [
                             'type' => Model\BlockType::class,
                         ],
                     ],

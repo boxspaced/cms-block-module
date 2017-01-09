@@ -85,8 +85,8 @@ class BlockRepository
 
         $conditions = $this->entityManager->createConditions();
         $conditions->field('status')->eq(VersionableInterface::STATUS_PUBLISHED);
-        $conditions->field('liveFrom')->lt($now);
-        $conditions->field('expiresEnd')->gt($now);
+        $conditions->field('live_from')->lt($now);
+        $conditions->field('expires_end')->gt($now);
 
         if (null !== $offset && null !== $showPerPage) {
             $conditions->paging($offset, $showPerPage);
@@ -102,7 +102,7 @@ class BlockRepository
     public function getAllVersionOf($versionOfId)
     {
         $conditions = $this->entityManager->createConditions();
-        $conditions->field('versionOf.id')->eq($versionOfId);
+        $conditions->field('version_of.id')->eq($versionOfId);
 
         return $this->entityManager->findAll(Block::class, $conditions);
     }

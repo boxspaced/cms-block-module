@@ -65,7 +65,7 @@ class BlockField extends AbstractEntity
      */
     public function getParentBlock()
     {
-        return $this->get('parentBlock');
+        return $this->get('parent_block');
     }
 
     /**
@@ -74,7 +74,7 @@ class BlockField extends AbstractEntity
      */
     public function setParentBlock(Block $parentBlock)
     {
-        $this->set('parentBlock', $parentBlock);
+        $this->set('parent_block', $parentBlock);
         return $this;
     }
 

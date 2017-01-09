@@ -29,7 +29,7 @@ class BlockTemplate extends AbstractEntity
      */
     public function getForType()
     {
-        return $this->get('forType');
+        return $this->get('for_type');
     }
 
     /**
@@ -38,7 +38,7 @@ class BlockTemplate extends AbstractEntity
      */
     public function setForType(BlockType $forType)
     {
-        $this->set('forType', $forType);
+        $this->set('for_type', $forType);
 		return $this;
     }
 
@@ -65,7 +65,7 @@ class BlockTemplate extends AbstractEntity
      */
     public function getViewScript()
     {
-        return $this->get('viewScript');
+        return $this->get('view_script');
     }
 
     /**
@@ -74,7 +74,7 @@ class BlockTemplate extends AbstractEntity
      */
     public function setViewScript($viewScript)
     {
-        $this->set('viewScript', $viewScript);
+        $this->set('view_script', $viewScript);
 		return $this;
     }
 

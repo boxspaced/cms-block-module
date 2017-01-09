@@ -31,7 +31,7 @@ class BlockNote extends AbstractEntity
      */
     public function getParentBlock()
     {
-        return $this->get('parentBlock');
+        return $this->get('parent_block');
     }
 
     /**
@@ -40,7 +40,7 @@ class BlockNote extends AbstractEntity
      */
     public function setParentBlock(Block $parentBlock)
     {
-        $this->set('parentBlock', $parentBlock);
+        $this->set('parent_block', $parentBlock);
 		return $this;
     }
 
@@ -85,7 +85,7 @@ class BlockNote extends AbstractEntity
      */
     public function getCreatedTime()
     {
-        return $this->get('createdTime');
+        return $this->get('created_time');
     }
 
     /**
@@ -94,7 +94,7 @@ class BlockNote extends AbstractEntity
      */
     public function setCreatedTime(DateTime $createdTime = null)
     {
-        $this->set('createdTime', $createdTime);
+        $this->set('created_time', $createdTime);
 		return $this;
     }
 

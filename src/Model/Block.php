@@ -39,7 +39,7 @@ class Block extends AbstractEntity
      */
     public function getVersionOf()
     {
-        return $this->get('versionOf');
+        return $this->get('version_of');
     }
 
     /**
@@ -48,7 +48,7 @@ class Block extends AbstractEntity
      */
     public function setVersionOf($versionOf)
     {
-        $this->set('versionOf', $versionOf);
+        $this->set('version_of', $versionOf);
         return $this;
     }
 
@@ -111,7 +111,7 @@ class Block extends AbstractEntity
      */
     public function getLiveFrom()
     {
-        return $this->get('liveFrom');
+        return $this->get('live_from');
     }
 
     /**
@@ -120,7 +120,7 @@ class Block extends AbstractEntity
      */
     public function setLiveFrom(DateTime $liveFrom = null)
     {
-        $this->set('liveFrom', $liveFrom);
+        $this->set('live_from', $liveFrom);
         return $this;
     }
 
@@ -129,7 +129,7 @@ class Block extends AbstractEntity
      */
     public function getExpiresEnd()
     {
-        return $this->get('expiresEnd');
+        return $this->get('expires_end');
     }
 
     /**
@@ -138,7 +138,7 @@ class Block extends AbstractEntity
      */
     public function setExpiresEnd(DateTime $expiresEnd = null)
     {
-        $this->set('expiresEnd', $expiresEnd);
+        $this->set('expires_end', $expiresEnd);
         return $this;
     }
 
@@ -147,7 +147,7 @@ class Block extends AbstractEntity
      */
     public function getWorkflowStage()
     {
-        return $this->get('workflowStage');
+        return $this->get('workflow_stage');
     }
 
     /**
@@ -156,7 +156,7 @@ class Block extends AbstractEntity
      */
     public function setWorkflowStage($workflowStage)
     {
-        $this->set('workflowStage', $workflowStage);
+        $this->set('workflow_stage', $workflowStage);
         return $this;
     }
 
@@ -202,7 +202,7 @@ class Block extends AbstractEntity
      */
     public function getAuthoredTime()
     {
-        return $this->get('authoredTime');
+        return $this->get('authored_time');
     }
 
     /**
@@ -211,7 +211,7 @@ class Block extends AbstractEntity
      */
     public function setAuthoredTime(DateTime $authoredTime = null)
     {
-        $this->set('authoredTime', $authoredTime);
+        $this->set('authored_time', $authoredTime);
         return $this;
     }
 
@@ -220,7 +220,7 @@ class Block extends AbstractEntity
      */
     public function getLastModifiedTime()
     {
-        return $this->get('lastModifiedTime');
+        return $this->get('last_modified_time');
     }
 
     /**
@@ -229,7 +229,7 @@ class Block extends AbstractEntity
      */
     public function setLastModifiedTime(DateTime $lastModifiedTime = null)
     {
-        $this->set('lastModifiedTime', $lastModifiedTime);
+        $this->set('last_modified_time', $lastModifiedTime);
         return $this;
     }
 
@@ -238,7 +238,7 @@ class Block extends AbstractEntity
      */
     public function getPublishedTime()
     {
-        return $this->get('publishedTime');
+        return $this->get('published_time');
     }
 
     /**
@@ -247,7 +247,7 @@ class Block extends AbstractEntity
      */
     public function setPublishedTime(DateTime $publishedTime = null)
     {
-        $this->set('publishedTime', $publishedTime);
+        $this->set('published_time', $publishedTime);
         return $this;
     }
 
@@ -256,7 +256,7 @@ class Block extends AbstractEntity
      */
     public function getRollbackStopPoint()
     {
-        return $this->get('rollbackStopPoint');
+        return $this->get('rollback_stop_point');
     }
 
     /**
@@ -265,7 +265,7 @@ class Block extends AbstractEntity
      */
     public function setRollbackStopPoint(DateTime $rollbackStopPoint = null)
     {
-        $this->set('rollbackStopPoint', $rollbackStopPoint);
+        $this->set('rollback_stop_point', $rollbackStopPoint);
         return $this;
     }
 
