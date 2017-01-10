@@ -2,7 +2,7 @@
 namespace Block;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManager\Mapper\Conditions;
+use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
 use Core\Model\RepositoryFactory;
 use Account\Model\User;
@@ -146,17 +146,33 @@ return [
                     'one_to_many' => [
                         'fields' => [
                             'type' => Model\BlockField::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('parent_block.id')->eq($id);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'parent_block.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                         'notes' => [
                             'type' => Model\BlockNote::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('parent_block.id')->eq($id);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'parent_block.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
@@ -185,10 +201,18 @@ return [
                     'one_to_many' => [
                         'templates' => [
                             'type' => Model\BlockTemplate::class,
-                            'conditions' => function ($id) {
-                                return (new Conditions())
-                                        ->field('for_type.id')->eq($id);
-                            },
+                            'conditions' => [
+                                'factory' => ConditionsFactory::class,
+                                'options' => [
+                                    'constraints' => [
+                                        [
+                                            'field' => 'for_type.id',
+                                            'operation' => 'eq',
+                                            'value' => ':id',
+                                        ],
+                                    ],
+                                ],
+                            ],
                         ],
                     ],
                 ],
