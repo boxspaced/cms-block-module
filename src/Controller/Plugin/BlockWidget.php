@@ -67,7 +67,7 @@ class BlockWidget extends AbstractPlugin
         }
 
         return (new ViewModel($values))->setTemplate(sprintf(
-            'cms-block-module/block/%s.phtml',
+            'boxspaced/cms-block-module/block/%s.phtml',
             str_replace('_', '', $blockTemplate->viewScript)
         ));
     }

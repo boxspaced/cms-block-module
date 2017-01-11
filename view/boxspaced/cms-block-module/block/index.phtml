@@ -49,7 +49,7 @@
                 </thead>
                 <tbody>
                     <?php if ($this->blockItems) : ?>
-                    <?php echo $this->partialLoop('cms-block-module/block/block-item.phtml', $this->blockItems) ?>
+                    <?php echo $this->partialLoop('boxspaced/cms-block-module/block/block-item.phtml', $this->blockItems) ?>
                     <?php else : ?>
                     <tr class="odd"><td width="100%">Empty result set</td><td colspan="5">&nbsp;</td></tr>
                     <?php endif; ?>
@@ -59,7 +59,7 @@
             <?php echo $this->paginationControl(
                 $this->paginator,
                 'Sliding',
-                'block/block/admin-pagination.phtml'
+                'boxspaced/cms-block-module/block/admin-pagination.phtml'
             ); ?>
 
         </div><!-- End stage area -->
