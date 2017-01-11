@@ -1,5 +1,5 @@
 <?php
-namespace Block\Model;
+namespace Boxspaced\CmsBlockModule\Model;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
 

@@ -1,7 +1,7 @@
 <?php
-namespace Block\Service;
+namespace Boxspaced\CmsBlockModule\Service;
 
-use Block\Model\BlockNote as BlockNoteEntity;
+use Boxspaced\CmsBlockModule\Model\BlockNote as BlockNoteEntity;
 
 class BlockNote
 {

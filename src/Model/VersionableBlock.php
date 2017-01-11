@@ -1,9 +1,9 @@
 <?php
-namespace Block\Model;
+namespace Boxspaced\CmsBlockModule\Model;
 
 use DateTime;
-use Versioning\Model\VersionableInterface;
-use Account\Model\User;
+use Boxspaced\CmsVersioningModule\Model\VersionableInterface;
+use Boxspaced\CmsAccountModule\Model\User;
 
 class VersionableBlock implements VersionableInterface
 {

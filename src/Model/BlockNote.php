@@ -1,9 +1,9 @@
 <?php
-namespace Block\Model;
+namespace Boxspaced\CmsBlockModule\Model;
 
 use DateTime;
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Account\Model\User;
+use Boxspaced\CmsAccountModule\Model\User;
 
 class BlockNote extends AbstractEntity
 {

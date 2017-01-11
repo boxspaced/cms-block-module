@@ -1,5 +1,5 @@
 <?php
-namespace Block\Form;
+namespace Boxspaced\CmsBlockModule\Form;
 
 use Zend\Form\Form;
 use Zend\Form\Element;

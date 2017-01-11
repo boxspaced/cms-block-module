@@ -1,20 +1,20 @@
 <?php
-namespace Block\Service;
+namespace Boxspaced\CmsBlockModule\Service;
 
 use DateTime;
 use Zend\Cache\Storage\Adapter\AbstractAdapter as Cache;
 use Zend\Log\Logger;
 use Zend\Authentication\AuthenticationService;
 use Boxspaced\EntityManager\EntityManager;
-use Block\Model;
+use Boxspaced\CmsBlockModule\Model;
 use Zend\Db\Sql;
-use Block\Exception;
-use Account\Model\UserRepository;
-use Versioning\Model\VersioningService;
-use Workflow\Model\WorkflowService;
-use Core\Model\EntityFactory;
-use Account\Model\User;
-use Versioning\Model\VersionableInterface;
+use Boxspaced\CmsBlockModule\Exception;
+use Boxspaced\CmsAccountModule\Model\UserRepository;
+use Boxspaced\CmsVersioningModule\Model\VersioningService;
+use Boxspaced\CmsWorkflowModule\Model\WorkflowService;
+use Boxspaced\CmsCoreModule\Model\EntityFactory;
+use Boxspaced\CmsAccountModule\Model\User;
+use Boxspaced\CmsVersioningModule\Model\VersionableInterface;
 
 class BlockService
 {

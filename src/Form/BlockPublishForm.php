@@ -1,10 +1,10 @@
 <?php
-namespace Block\Form;
+namespace Boxspaced\CmsBlockModule\Form;
 
 use DateTime;
 use Zend\Form\Form;
 use Zend\Form\Element;
-use Block\Service;
+use Boxspaced\CmsBlockModule\Service;
 use Zend\InputFilter\InputFilter;
 use Zend\Validator;
 use Zend\Filter;

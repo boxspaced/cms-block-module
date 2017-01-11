@@ -1,7 +1,7 @@
 <?php
-namespace Block\Service;
+namespace Boxspaced\CmsBlockModule\Service;
 
-use Block\Model\Block as BlockEntity;
+use Boxspaced\CmsBlockModule\Model\Block as BlockEntity;
 
 class Block
 {

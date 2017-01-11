@@ -1,9 +1,9 @@
 <?php
-namespace Block\Controller\Plugin;
+namespace Boxspaced\CmsBlockModule\Controller\Plugin;
 
 use DateTime;
 use Zend\Mvc\Controller\Plugin\AbstractPlugin;
-use Block\Service;
+use Boxspaced\CmsBlockModule\Service;
 use Zend\View\Model\ViewModel;
 use Zend\Filter\StaticFilter;
 use Zend\Filter\Word\CamelCaseToDash;

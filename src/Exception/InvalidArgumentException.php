@@ -1,5 +1,5 @@
 <?php
-namespace Block\Exception;
+namespace Boxspaced\CmsBlockModule\Exception;
 
 class InvalidArgumentException extends \InvalidArgumentException implements ExceptionInterface
 {

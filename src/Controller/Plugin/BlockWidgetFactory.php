@@ -1,9 +1,9 @@
 <?php
-namespace Block\Controller\Plugin;
+namespace Boxspaced\CmsBlockModule\Controller\Plugin;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Block\Service\BlockService;
+use Boxspaced\CmsBlockModule\Service\BlockService;
 
 class BlockWidgetFactory implements FactoryInterface
 {

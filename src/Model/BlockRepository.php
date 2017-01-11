@@ -1,10 +1,10 @@
 <?php
-namespace Block\Model;
+namespace Boxspaced\CmsBlockModule\Model;
 
 use DateTime;
 use Boxspaced\EntityManager\EntityManager;
 use Boxspaced\EntityManager\Collection\Collection;
-use Versioning\Model\VersionableInterface;
+use Boxspaced\CmsVersioningModule\Model\VersionableInterface;
 
 class BlockRepository
 {

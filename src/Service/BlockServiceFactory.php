@@ -1,16 +1,16 @@
 <?php
-namespace Block\Service;
+namespace Boxspaced\CmsBlockModule\Service;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
 use Zend\Log\Logger;
 use Zend\Authentication\AuthenticationService;
 use Boxspaced\EntityManager\EntityManager;
-use Block\Model;
-use Account\Model\UserRepository;
-use Versioning\Model\VersioningService;
-use Workflow\Model\WorkflowService;
-use Core\Model\EntityFactory;
+use Boxspaced\CmsBlockModule\Model;
+use Boxspaced\CmsAccountModule\Model\UserRepository;
+use Boxspaced\CmsVersioningModule\Model\VersioningService;
+use Boxspaced\CmsWorkflowModule\Model\WorkflowService;
+use Boxspaced\CmsCoreModule\Model\EntityFactory;
 
 class BlockServiceFactory implements FactoryInterface
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Block\Service;
+namespace Boxspaced\CmsBlockModule\Service;
 
 class AvailableBlockTypeOption
 {

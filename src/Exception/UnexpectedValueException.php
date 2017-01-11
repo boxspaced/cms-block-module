@@ -1,5 +1,5 @@
 <?php
-namespace Block\Exception;
+namespace Boxspaced\CmsBlockModule\Exception;
 
 class UnexpectedValueException extends \UnexpectedValueException implements ExceptionInterface
 {

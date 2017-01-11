@@ -7,7 +7,7 @@
     "prefer-stable": true,
     "autoload": {
         "psr-4": {
-            "Block\\": "src/"
+            "Boxspaced\\CmsBlockModule\\": "src/"
         }
     },
     "config": {
@@ -30,7 +30,7 @@
     ],
     "extra": {
         "zf": {
-            "module": "Block"
+            "module": "Boxspaced\\CmsBlockModule"
         }
     }
 }

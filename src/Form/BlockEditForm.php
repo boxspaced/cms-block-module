@@ -1,9 +1,9 @@
 <?php
-namespace Block\Form;
+namespace Boxspaced\CmsBlockModule\Form;
 
 use Zend\Form\Form;
 use Zend\Form\Element;
-use Block\Service;
+use Boxspaced\CmsBlockModule\Service;
 use Zend\Filter\StaticFilter;
 use Zend\InputFilter\InputFilter;
 use Zend\Filter;

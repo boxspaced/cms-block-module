@@ -1,14 +1,14 @@
 <?php
-namespace Block\Controller;
+namespace Boxspaced\CmsBlockModule\Controller;
 
 use Zend\ServiceManager\Factory\FactoryInterface;
 use Interop\Container\ContainerInterface;
-use Block\Controller\BlockController;
-use Block\Service\BlockService;
-use Workflow\Service\WorkflowService;
-use Account\Service\AccountService;
+use Boxspaced\CmsBlockModule\Controller\BlockController;
+use Boxspaced\CmsBlockModule\Service\BlockService;
+use Boxspaced\CmsWorkflowModule\Service\WorkflowService;
+use Boxspaced\CmsAccountModule\Service\AccountService;
 use Zend\Log\Logger;
-use Core\Controller\AbstractControllerFactory;
+use Boxspaced\CmsCoreModule\Controller\AbstractControllerFactory;
 
 class BlockControllerFactory extends AbstractControllerFactory implements FactoryInterface
 {

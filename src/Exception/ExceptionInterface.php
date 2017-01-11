@@ -1,5 +1,5 @@
 <?php
-namespace Block\Exception;
+namespace Boxspaced\CmsBlockModule\Exception;
 
 interface ExceptionInterface
 {

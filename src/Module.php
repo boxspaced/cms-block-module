@@ -1,5 +1,5 @@
 <?php
-namespace Block;
+namespace Boxspaced\CmsBlockModule;
 
 class Module
 {

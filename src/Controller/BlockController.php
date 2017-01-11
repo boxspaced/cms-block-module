@@ -1,16 +1,16 @@
 <?php
-namespace Block\Controller;
+namespace Boxspaced\CmsBlockModule\Controller;
 
 use DateTime;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Zend\Log\Logger;
-use Block\Service;
-use Block\Exception;
+use Boxspaced\CmsBlockModule\Service;
+use Boxspaced\CmsBlockModule\Exception;
 use Zend\Paginator;
-use Block\Form;
-use Account\Service\AccountService;
-use Workflow\Service\WorkflowService;
+use Boxspaced\CmsBlockModule\Form;
+use Boxspaced\CmsAccountModule\Service\AccountService;
+use Boxspaced\CmsWorkflowModule\Service\WorkflowService;
 
 class BlockController extends AbstractActionController
 {

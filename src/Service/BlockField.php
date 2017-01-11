@@ -1,7 +1,7 @@
 <?php
-namespace Block\Service;
+namespace Boxspaced\CmsBlockModule\Service;
 
-use Block\Model\BlockField as BlockFieldEntity;
+use Boxspaced\CmsBlockModule\Model\BlockField as BlockFieldEntity;
 
 class BlockField
 {
