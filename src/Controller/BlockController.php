@@ -392,7 +392,7 @@ class BlockController extends AbstractActionController
         $form->get('confirm')->setValue('Confirm delete');
 
         $this->view->form = $form;
-        $this->view->setTemplate('block/block/confirm.phtml');
+        $this->view->setTemplate('cms-block-module/block/confirm.phtml');
 
         if (!$this->getRequest()->isPost()) {
             return $this->view;
@@ -425,7 +425,7 @@ class BlockController extends AbstractActionController
         $form->get('confirm')->setValue('Confirm update');
 
         $this->view->form = $form;
-        $this->view->setTemplate('block/block/confirm.phtml');
+        $this->view->setTemplate('cms-block-module/block/confirm.phtml');
 
         if (!$this->getRequest()->isPost()) {
             return $this->view;
