@@ -350,7 +350,7 @@ class Block extends AbstractEntity
     }
 
     /**
-     * @todo exchange array interface?
+     * @todo use exchange array interface
      * @return array
      */
     public function getVersioningTransferValues()

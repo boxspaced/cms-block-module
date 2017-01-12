@@ -102,7 +102,7 @@ class BlockController extends AbstractActionController
             $blockMeta = $this->blockService->getBlockMeta($block->id);
             $publishingOptions = $this->blockService->getCurrentPublishingOptions($block->id);
 
-            // @todo remove, should be view helpers
+            // @todo should be view helpers
             $lifespanState = $this->itemAdminWidget()->calcLifeSpanState($publishingOptions->liveFrom, $publishingOptions->expiresEnd);
             $lifespanTitle = $this->itemAdminWidget()->calcLifeSpanTitle($publishingOptions->liveFrom, $publishingOptions->expiresEnd);
 
