@@ -7,6 +7,7 @@ use Boxspaced\CmsBlockModule\Service;
 use Zend\View\Model\ViewModel;
 use Zend\Filter\StaticFilter;
 use Zend\Filter\Word\CamelCaseToDash;
+use Exception;
 
 class BlockWidget extends AbstractPlugin
 {
@@ -35,9 +36,14 @@ class BlockWidget extends AbstractPlugin
             return null;
         }
 
-        $block = $this->blockService->getCacheControlledBlock($id);
-        $blockMeta = $this->blockService->getCacheControlledBlockMeta($id);
-        $publishingOptions = $this->blockService->getCurrentPublishingOptions($id);
+        try {
+            $block = $this->blockService->getCacheControlledBlock($id);
+            $blockMeta = $this->blockService->getCacheControlledBlockMeta($id);
+            $publishingOptions = $this->blockService->getCurrentPublishingOptions($id);
+        } catch (Exception $e) {
+            // @todo log as warning
+            return null;
+        }
 
         $now = new DateTime();
 
