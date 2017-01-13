@@ -31,6 +31,10 @@ class BlockWidget extends AbstractPlugin
      */
     public function __invoke($id, $placeholder)
     {
+        if (!$id || !$placeholder) {
+            return null;
+        }
+
         $block = $this->blockService->getCacheControlledBlock($id);
         $blockMeta = $this->blockService->getCacheControlledBlockMeta($id);
         $publishingOptions = $this->blockService->getCurrentPublishingOptions($id);
