@@ -39,10 +39,10 @@ class BlockRepository
      */
     public function getByName($name)
     {
-        $conditions = $this->entityManager->createConditions();
-        $conditions->field('name')->eq($name);
+        $query = $this->entityManager->createQuery();
+        $query->field('name')->eq($name);
 
-        return $this->entityManager->findOne(Block::class, $conditions);
+        return $this->entityManager->findOne(Block::class, $query);
     }
 
     /**
@@ -62,16 +62,16 @@ class BlockRepository
      */
     public function getAllPublished($offset = null, $showPerPage = null, $orderBy = 'name', $dir = 'ASC')
     {
-        $conditions = $this->entityManager->createConditions();
-        $conditions->field('status')->eq(VersionableInterface::STATUS_PUBLISHED);
+        $query = $this->entityManager->createQuery();
+        $query->field('status')->eq(VersionableInterface::STATUS_PUBLISHED);
 
         if (null !== $offset && null !== $showPerPage) {
-            $conditions->paging($offset, $showPerPage);
+            $query->paging($offset, $showPerPage);
         }
 
-        $conditions->order($orderBy, $dir);
+        $query->order($orderBy, $dir);
 
-        return $this->entityManager->findAll(Block::class, $conditions);
+        return $this->entityManager->findAll(Block::class, $query);
     }
 
     /**
@@ -83,16 +83,16 @@ class BlockRepository
     {
         $now = new DateTime();
 
-        $conditions = $this->entityManager->createConditions();
-        $conditions->field('status')->eq(VersionableInterface::STATUS_PUBLISHED);
-        $conditions->field('live_from')->lt($now);
-        $conditions->field('expires_end')->gt($now);
+        $query = $this->entityManager->createQuery();
+        $query->field('status')->eq(VersionableInterface::STATUS_PUBLISHED);
+        $query->field('live_from')->lt($now);
+        $query->field('expires_end')->gt($now);
 
         if (null !== $offset && null !== $showPerPage) {
-            $conditions->paging($offset, $showPerPage);
+            $query->paging($offset, $showPerPage);
         }
 
-        return $this->entityManager->findAll(Block::class, $conditions);
+        return $this->entityManager->findAll(Block::class, $query);
     }
 
     /**
@@ -101,10 +101,10 @@ class BlockRepository
      */
     public function getAllVersionOf($versionOfId)
     {
-        $conditions = $this->entityManager->createConditions();
-        $conditions->field('version_of.id')->eq($versionOfId);
+        $query = $this->entityManager->createQuery();
+        $query->field('version_of.id')->eq($versionOfId);
 
-        return $this->entityManager->findAll(Block::class, $conditions);
+        return $this->entityManager->findAll(Block::class, $query);
     }
 
     /**
