@@ -2,7 +2,6 @@
 namespace Boxspaced\CmsBlockModule;
 
 use Boxspaced\EntityManager\Entity\AbstractEntity;
-use Boxspaced\EntityManagerModule\Mapper\ConditionsFactory;
 use Zend\Router\Http\Segment;
 use Boxspaced\CmsCoreModule\Model\RepositoryFactory;
 use Boxspaced\CmsAccountModule\Model\User;
@@ -146,33 +145,9 @@ return [
                     'one_to_many' => [
                         'fields' => [
                             'type' => Model\BlockField::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'parent_block.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                         'notes' => [
                             'type' => Model\BlockNote::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'parent_block.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                     ],
                 ],
@@ -201,18 +176,6 @@ return [
                     'one_to_many' => [
                         'templates' => [
                             'type' => Model\BlockTemplate::class,
-                            'conditions' => [
-                                'factory' => ConditionsFactory::class,
-                                'options' => [
-                                    'constraints' => [
-                                        [
-                                            'field' => 'for_type.id',
-                                            'operation' => 'eq',
-                                            'value' => ':id',
-                                        ],
-                                    ],
-                                ],
-                            ],
                         ],
                     ],
                 ],
