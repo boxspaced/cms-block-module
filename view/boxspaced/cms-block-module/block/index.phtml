@@ -1,54 +1,37 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title></title>
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
-        <link rel="stylesheet" type="text/css" href="/css/admin.css" />
-        <script type="text/javascript" src="/js/admin.js"></script>
-    </head>
 
-    <body class="yui-skin-sam"><?php echo $this->adminNavigation ?>
+        <div class="row">
+            <div class="col-md-12">
 
-        <div class="title">Index of: blocks</div>
+                <h1>Index of: blocks</h1>
 
-        <?php echo $this->messages() ?>
+                <?php if ($this->allowCreate) : ?>
+                <div class="actions">
+                    <img src="/images/icons/add.png" alt="Add icon" />
+                    <a class="link-button" href="<?php echo $this->url('block', ['action' => 'create']); ?>">Create new</a>
+                </div>
+                <?php endif; ?>
 
-        <?php if ($this->allowCreate) : ?>
-        <div class="actions">
-            <img src="/images/icons/add.png" alt="Add icon" />
-            <a class="link-button" href="<?php echo $this->url('block', ['action' => 'create']); ?>">Create new</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th colspan="5">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php if ($this->blockItems) : ?>
+                        <?php echo $this->partialLoop('boxspaced/cms-block-module/block/block-item.phtml', $this->blockItems) ?>
+                        <?php else : ?>
+                        <tr class="odd"><td width="100%">Empty result set</td><td colspan="5">&nbsp;</td></tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+
+                <?php echo $this->paginationControl(
+                    $this->paginator,
+                    'Sliding',
+                    'boxspaced/cms-block-module/block/admin-pagination.phtml'
+                ); ?>
+
+            </div>
         </div>
-        <?php endif; ?>
-
-        </div><!-- End top area -->
-
-        <div id="stage"><!-- Start stage area -->
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th colspan="5">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if ($this->blockItems) : ?>
-                    <?php echo $this->partialLoop('boxspaced/cms-block-module/block/block-item.phtml', $this->blockItems) ?>
-                    <?php else : ?>
-                    <tr class="odd"><td width="100%">Empty result set</td><td colspan="5">&nbsp;</td></tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-
-            <?php echo $this->paginationControl(
-                $this->paginator,
-                'Sliding',
-                'boxspaced/cms-block-module/block/admin-pagination.phtml'
-            ); ?>
-
-        </div><!-- End stage area -->
-
-    </body>
-</html>

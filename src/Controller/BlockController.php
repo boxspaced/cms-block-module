@@ -90,7 +90,7 @@ class BlockController extends AbstractActionController
     {
         $adminNavigation = $this->adminNavigationWidget();
         if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
+            $this->layout()->addChild($adminNavigation, 'adminNavigation');
         }
 
         $adapter = new Paginator\Adapter\Callback(
@@ -405,6 +405,8 @@ class BlockController extends AbstractActionController
         $form->get('confirm')->setValue('Confirm delete');
 
         $this->view->form = $form;
+
+        $this->layout('layout/dialog');
         $this->view->setTemplate('boxspaced/cms-block-module/block/confirm.phtml');
 
         if (!$this->getRequest()->isPost()) {
@@ -438,6 +440,8 @@ class BlockController extends AbstractActionController
         $form->get('confirm')->setValue('Confirm update');
 
         $this->view->form = $form;
+
+        $this->layout('layout/dialog');
         $this->view->setTemplate('boxspaced/cms-block-module/block/confirm.phtml');
 
         if (!$this->getRequest()->isPost()) {
