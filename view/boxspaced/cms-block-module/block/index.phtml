@@ -2,30 +2,27 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1>Index of: blocks</h1>
+                <h1>Blocks</h1>
 
-                <?php if ($this->allowCreate) : ?>
-                <div class="actions">
-                    <img src="/images/icons/add.png" alt="Add icon" />
-                    <a class="link-button" href="<?php echo $this->url('block', ['action' => 'create']); ?>">Create new</a>
-                </div>
-                <?php endif; ?>
+                <div class="panel panel-default">
 
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th colspan="5">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php if ($this->blockItems) : ?>
-                        <?php echo $this->partialLoop('boxspaced/cms-block-module/block/block-item.phtml', $this->blockItems) ?>
-                        <?php else : ?>
-                        <tr class="odd"><td width="100%">Empty result set</td><td colspan="5">&nbsp;</td></tr>
+                    <div class="panel-heading clearfix">
+                        <?php if ($this->allowCreate) : ?>
+                        <a class="btn btn-default pull-left" href="<?php echo $this->url('block', ['action' => 'create']); ?>">Create new</a>
                         <?php endif; ?>
-                    </tbody>
-                </table>
+                    </div>
+
+                    <table class="table">
+                        <tbody>
+                            <?php if ($this->blockItems) : ?>
+                            <?php echo $this->partialLoop('boxspaced/cms-block-module/block/block-item.phtml', $this->blockItems) ?>
+                            <?php else : ?>
+                            <tr class="odd"><td width="100%">Empty result set</td><td colspan="5">&nbsp;</td></tr>
+                            <?php endif; ?>
+                        </tbody>
+                    </table>
+
+                </div>
 
                 <?php echo $this->paginationControl(
                     $this->paginator,
