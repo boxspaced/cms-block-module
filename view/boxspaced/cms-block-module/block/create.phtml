@@ -2,43 +2,36 @@
         <div class="row">
             <div class="col-md-12">
 
-                <h1>Create: block</h1>
-
-                <div class="info">
-                    <img src="/images/required_star.png" alt="Required"> indicates required field
-                </div>
+                <h1>Create block</h1>
 
                 <?php
                 $form = $this->form;
-                $form->setAttribute('name', 'main')->prepare();
+                $form->setAttribute('name', 'main');
+                $form->setAttribute('class', 'form-horizontal');
+                $form->prepare();
                 ?>
 
                 <?php echo $this->form()->openTag($form) ?>
 
                     <?php echo $this->adminFormElement($form->get('token')) ?>
 
-                    <div class="white-box"><!-- Start fieldset -->
-                        <div class="white-box-rounded-corner-top"><div></div></div>
-                        <div class="white-box-content">
-                            <div class="white-box-title">Settings</div>
+                    <fieldset>
+                        <legend>Settings</legend>
 
-                            <?php echo $this->adminFormElement($form->get('name')) ?>
-                            <?php echo $this->adminFormElement($form->get('typeId')) ?>
+                        <?php echo $this->adminFormElement($form->get('name')) ?>
+                        <?php echo $this->adminFormElement($form->get('typeId')) ?>
+
+                    </fieldset>
+
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+
+                            <?php
+                            $form->get('create')->setAttribute('class', 'btn btn-primary');
+                            echo $this->formElement($form->get('create'));
+                            ?>
 
                         </div>
-                    </div>
-
-                    <div class="submit-area">
-
-                        <div class="form-element">
-                            <div class="form-inputs line-up">
-                                <?php
-                                $form->get('create')->setAttribute('class', 'button');
-                                echo $this->formElement($form->get('create'));
-                                ?>
-                            </div>
-                        </div>
-
                     </div>
 
                 <?php echo $this->form()->closeTag() ?>

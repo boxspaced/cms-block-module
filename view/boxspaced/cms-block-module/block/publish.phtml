@@ -15,16 +15,14 @@ $this->inlineScript()->appendScript($script);
         <div class="row">
             <div class="col-md-12">
 
-                <h1>Publish:
-                <?php echo $this->escapeHtml($this->typeName) ?> - <i><?php echo $this->escapeHtml($this->blockName) ?></i></h1>
-
-                <div class="info">
-                    <img src="/images/required_star.png" alt="Required"> indicates required field
-                </div>
+                <h1>Publish
+                <?php echo $this->escapeHtml($this->typeName) ?> <small><?php echo $this->escapeHtml($this->blockName) ?></small></h1>
 
                 <?php
                 $form = $this->form;
-                $form->setAttribute('name', 'main')->prepare();
+                $form->setAttribute('name', 'main');
+                $form->setAttribute('class', 'form-horizontal');
+                $form->prepare();
                 ?>
 
                 <?php echo $this->form()->openTag($form) ?>
@@ -33,76 +31,67 @@ $this->inlineScript()->appendScript($script);
                     <?php echo $this->adminFormElement($form->get('partial')) ?>
                     <?php echo $this->adminFormElement($form->get('token')) ?>
 
-                    <div class="white-box"><!-- Start fieldset -->
-                        <div class="white-box-rounded-corner-top"><div></div></div>
-                        <div class="white-box-content">
-                            <div class="white-box-title">Notes</div>
-                            <p>
-                                <?php if (empty($this->blockNotes)) : ?>
-                                    No notes found
-                                <?php else : ?>
-                                    <?php foreach ($this->blockNotes as $note) : ?>
-                                        <?php
-                                        echo $this->date($note->time, 'F j Y H:i') . ' - ' .
-                                        $this->escapeHtml($note->username) . ' - ' .
-                                        $this->escapeHtml($note->text)
-                                        ?><br />
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </p>
-                        </div>
-                    </div><!-- End fieldset -->
+                    <fieldset>
+                        <legend>Notes</legend>
+                        <p>
+                            <?php if (empty($this->blockNotes)) : ?>
+                                No notes found
+                            <?php else : ?>
+                                <?php foreach ($this->blockNotes as $note) : ?>
+                                    <?php
+                                    echo $this->date($note->time, 'F j Y H:i') . ' - ' .
+                                    $this->escapeHtml($note->username) . ' - ' .
+                                    $this->escapeHtml($note->text)
+                                    ?><br />
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        </p>
+                    </fieldset>
 
-                    <div class="white-box"><!-- Start fieldset -->
-                        <div class="white-box-rounded-corner-top"><div></div></div>
-                        <div class="white-box-content">
-                            <div class="white-box-title">Lifespan</div>
+                    <fieldset>
+                        <legend>Lifespan</legend>
 
-                            <?php echo $this->adminFormElement($form->get('liveFrom')) ?>
-                            <div style="position: relative; top: -38px; left: 315px;">
-                                <a href="javascript:cal1.popup();"><img src="/images/icons/calendar.png" width="16" height="16" border="0"
-                                     title="Pick date/time" alt="Pick date/time"></a> or <a href="javascript:set_field_value('main', 'liveFrom',
-                                  '<?php echo date('Y-m-d') ?> 00:00:00');">Immediately</a></div>
+                        <?php echo $this->adminFormElement($form->get('liveFrom')) ?>
+                        <div style="position: relative; top: -38px; left: 315px;">
+                            <a href="javascript:cal1.popup();"><img src="/images/icons/calendar.png" width="16" height="16" border="0"
+                                 title="Pick date/time" alt="Pick date/time"></a> or <a href="javascript:set_field_value('main', 'liveFrom',
+                              '<?php echo date('Y-m-d') ?> 00:00:00');">Immediately</a></div>
 
-                            <?php echo $this->adminFormElement($form->get('expiresEnd')) ?>
-                            <div style="position: relative; top: -38px; left: 315px;">
-                            <a href="javascript:cal2.popup();"><img src="/images/icons/calendar.png" width="16" height="16" border="0"
-                                 title="Pick date/time" alt="Pick date/time"></a> or <a href="javascript:set_field_value('main', 'expiresEnd',
-                               '2038-01-19 00:00:00');">Never</a></div>
+                        <?php echo $this->adminFormElement($form->get('expiresEnd')) ?>
+                        <div style="position: relative; top: -38px; left: 315px;">
+                        <a href="javascript:cal2.popup();"><img src="/images/icons/calendar.png" width="16" height="16" border="0"
+                             title="Pick date/time" alt="Pick date/time"></a> or <a href="javascript:set_field_value('main', 'expiresEnd',
+                           '2038-01-19 00:00:00');">Never</a></div>
 
-                        </div>
-                    </div><!-- End fieldset -->
+                    </fieldset>
 
-                    <div class="white-box"><!-- Start fieldset -->
-                        <div class="white-box-rounded-corner-top"><div></div></div>
-                        <div class="white-box-content">
-                            <div class="white-box-title">Settings</div>
+                    <fieldset>
+                        <legend>Settings</legend>
 
-                                <?php echo $this->adminFormElement($form->get('name')) ?>
+                        <?php echo $this->adminFormElement($form->get('name')) ?>
 
-                                <?php
-                                $form->get('templateId')->setAttribute('onChange', 'submit_partial(this.form)');
-                                if ($this->templateDescription) :
-                                    $currentDesc = $form->get('templateId')->getOption('description');
-                                    $form->get('templateId')->setOption('description', $currentDesc . $this->templateDescription);
-                                endif;
-                                if (count($form->get('templateId')->getValueOptions()) > 1) :
-                                    echo $this->adminFormElement($form->get('templateId'));
-                                else :
-                                    echo $this->formHidden($form->get('templateId'));
-                                endif;
-                                ?>
-                        </div>
-                    </div>
+                        <?php
+                        $form->get('templateId')->setAttribute('onChange', 'submit_partial(this.form)');
+                        if ($this->templateDescription) :
+                            $currentDesc = $form->get('templateId')->getOption('description');
+                            $form->get('templateId')->setOption('description', $currentDesc . $this->templateDescription);
+                        endif;
+                        if (count($form->get('templateId')->getValueOptions()) > 1) :
+                            echo $this->adminFormElement($form->get('templateId'));
+                        else :
+                            echo $this->formHidden($form->get('templateId'));
+                        endif;
+                        ?>
+                    </fieldset>
 
-                    <div class="submit-area">
-                        <div class="form-element">
-                            <div class="form-inputs line-up">
-                                <?php
-                                $form->get('publish')->setAttribute('class', 'button');
-                                echo $this->formElement($form->get('publish'));
-                                ?>
-                            </div>
+                    <div class="form-group">
+                        <div class="col-md-10 col-md-offset-2">
+
+                            <?php
+                            $form->get('publish')->setAttribute('class', 'btn btn-success');
+                            echo $this->formElement($form->get('publish'));
+                            ?>
+
                         </div>
                     </div>
 
