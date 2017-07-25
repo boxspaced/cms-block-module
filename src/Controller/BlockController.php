@@ -384,8 +384,8 @@ class BlockController extends AbstractActionController
         }
 
         $publishingOptions->name = $values['name'];
-        $publishingOptions->liveFrom = new DateTime($values['liveFrom']);
-        $publishingOptions->expiresEnd = new DateTime($values['expiresEnd']);
+        $publishingOptions->liveFrom = (new DateTime($values['liveFrom']))->setTime(0, 0, 0);
+        $publishingOptions->expiresEnd = (new DateTime($values['expiresEnd']))->setTime(0, 0, 0);
         $publishingOptions->templateId = $values['templateId'];
 
         $this->blockService->publish($id, $publishingOptions);

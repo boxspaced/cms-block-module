@@ -1,16 +1,3 @@
-<?php
-$script = <<<SCRIPT
-var input1 = document.getElementById('live-from');
-var cal1 = new calendar(input1);
-cal1.year_scroll = true;
-cal1.time_comp = true;
-var input2 = document.getElementById('expires-end');
-var cal2 = new calendar(input2);
-cal2.year_scroll = true;
-cal2.time_comp = true;
-SCRIPT;
-$this->inlineScript()->appendScript($script);
-?>
 
         <div class="row">
             <div class="col-md-12">
@@ -51,17 +38,15 @@ $this->inlineScript()->appendScript($script);
                     <fieldset>
                         <legend>Lifespan</legend>
 
-                        <?php echo $this->adminFormElement($form->get('liveFrom')) ?>
-                        <div style="position: relative; top: -38px; left: 315px;">
-                            <a href="javascript:cal1.popup();"><img src="/images/icons/calendar.png" width="16" height="16" border="0"
-                                 title="Pick date/time" alt="Pick date/time"></a> or <a href="javascript:set_field_value('main', 'liveFrom',
-                              '<?php echo date('Y-m-d') ?> 00:00:00');">Immediately</a></div>
+                        <?php
+                        $form->get('liveFrom')->setAttribute('class', 'live-from-datepicker');
+                        echo $this->adminFormElement($form->get('liveFrom'));
+                        ?>
 
-                        <?php echo $this->adminFormElement($form->get('expiresEnd')) ?>
-                        <div style="position: relative; top: -38px; left: 315px;">
-                        <a href="javascript:cal2.popup();"><img src="/images/icons/calendar.png" width="16" height="16" border="0"
-                             title="Pick date/time" alt="Pick date/time"></a> or <a href="javascript:set_field_value('main', 'expiresEnd',
-                           '2038-01-19 00:00:00');">Never</a></div>
+                        <?php
+                        $form->get('expiresEnd')->setAttribute('class', 'expires-end-datepicker');
+                        echo $this->adminFormElement($form->get('expiresEnd'));
+                        ?>
 
                     </fieldset>
 
