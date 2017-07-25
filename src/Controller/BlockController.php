@@ -88,11 +88,6 @@ class BlockController extends AbstractActionController
      */
     public function indexAction()
     {
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->layout()->addChild($adminNavigation, 'adminNavigation');
-        }
-
         $adapter = new Paginator\Adapter\Callback(
             function ($offset, $itemCountPerPage) {
                 return $this->blockService->getPublishedBlocks($offset, $itemCountPerPage);

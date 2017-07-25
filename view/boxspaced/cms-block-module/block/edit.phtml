@@ -48,23 +48,28 @@ $this->headScript()->appendFile('/ckfinder/ckfinder.js');
 
                     </fieldset>
 
-                    <?php echo $this->adminFormElement($form->get('note')) ?>
+                    <fieldset>
+                        <legend>Submit</legend>
 
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-2">
+                        <?php echo $this->adminFormElement($form->get('note')) ?>
 
-                                <?php
-                                $form->get('save')->setAttribute('class', 'btn btn-warning');
-                                echo $this->formElement($form->get('save'));
-                                ?>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
 
-                                <?php
-                                $form->get('publish')->setAttribute('class', 'btn btn-success');
-                                echo $this->formElement($form->get('publish'));
-                                ?>
+                                    <?php
+                                    $form->get('save')->setAttribute('class', 'btn btn-primary');
+                                    echo $this->formElement($form->get('save'));
+                                    ?>
 
+                                    <?php
+                                    $form->get('publish')->setAttribute('class', 'btn btn-success');
+                                    echo $this->formElement($form->get('publish'));
+                                    ?>
+
+                            </div>
                         </div>
-                    </div>
+
+                    </fieldset>
 
                 <?php echo $this->form()->closeTag() ?>
 

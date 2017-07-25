@@ -23,6 +23,8 @@ class BlockControllerFactory extends AbstractControllerFactory implements Factor
             $container->get('config')
         );
 
+        $this->adminNavigationWidget($controller);
+
         return $this->forceHttps($controller, $container);
     }
 

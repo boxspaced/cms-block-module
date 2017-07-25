@@ -69,16 +69,21 @@
                         ?>
                     </fieldset>
 
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-2">
+                    <fieldset>
+                        <legend>Submit</legend>
 
-                            <?php
-                            $form->get('publish')->setAttribute('class', 'btn btn-success');
-                            echo $this->formElement($form->get('publish'));
-                            ?>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
 
+                                <?php
+                                $form->get('publish')->setAttribute('class', 'btn btn-success');
+                                echo $this->formElement($form->get('publish'));
+                                ?>
+
+                            </div>
                         </div>
-                    </div>
+
+                    </fieldset>
 
                 <?php echo $this->form()->closeTag() ?>
 

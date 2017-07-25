@@ -23,16 +23,21 @@
 
                     </fieldset>
 
-                    <div class="form-group">
-                        <div class="col-md-10 col-md-offset-2">
+                    <fieldset>
+                        <legend>Submit</legend>
 
-                            <?php
-                            $form->get('create')->setAttribute('class', 'btn btn-primary');
-                            echo $this->formElement($form->get('create'));
-                            ?>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
 
+                                <?php
+                                $form->get('create')->setAttribute('class', 'btn btn-primary');
+                                echo $this->formElement($form->get('create'));
+                                ?>
+
+                            </div>
                         </div>
-                    </div>
+
+                    </fieldset>
 
                 <?php echo $this->form()->closeTag() ?>
 
