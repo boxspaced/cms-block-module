@@ -1,6 +1,6 @@
 
                 <fieldset>
-                    <legend>Please confirm this action</legend>>
+                    <legend>Please confirm this action g</legend>>
 
                     <?php echo $this->messages() ?>
 
@@ -14,13 +14,17 @@
                         <?php echo $this->adminFormElement($form->get('id')) ?>
                         <?php echo $this->adminFormElement($form->get('token')) ?>
 
-                        <div class="form-element">
-                            <div class="form-inputs line-up">
+                        <div class="form-group">
+                            <div class="col-md-4 col-md-offset-4">
+
                                 <?php
-                                $form->get('confirm')->setAttribute('class', 'btn btn-primary');
-                                echo $this->formElement($form->get('confirm')) ?>
+                                $form->get('confirm')->setAttribute('class', 'btn btn-danger');
+                                echo $this->formElement($form->get('confirm'));
+                                ?>
+
                             </div>
                         </div>
+
                     <?php echo $this->form()->closeTag() ?>
 
                 </fieldset>>
