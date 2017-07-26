@@ -88,14 +88,24 @@ class BlockController extends AbstractActionController
      */
     public function indexAction()
     {
-        $adapter = new Paginator\Adapter\Callback(
-            function ($offset, $itemCountPerPage) {
-                return $this->blockService->getPublishedBlocks($offset, $itemCountPerPage);
-            },
-            function () {
-                return $this->blockService->countPublishedBlocks();
-            }
-        );
+        $search = $this->params()->fromQuery('search');
+
+        if (!empty($search)) {
+
+            $results = $this->blockService->searchPublishedBlocks($search);
+            $adapter = new Paginator\Adapter\ArrayAdapter($results);
+
+        } else {
+
+            $adapter = new Paginator\Adapter\Callback(
+                function ($offset, $itemCountPerPage) {
+                    return $this->blockService->getPublishedBlocks($offset, $itemCountPerPage);
+                },
+                function () {
+                    return $this->blockService->countPublishedBlocks();
+                }
+            );
+        }
 
         $paginator = new Paginator\Paginator($adapter);
         $paginator->setCurrentPageNumber($this->params()->fromQuery('page', 1));

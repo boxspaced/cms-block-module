@@ -156,6 +156,26 @@ class BlockService
     }
 
     /**
+     * @param string $query
+     * @return Block[]
+     */
+    public function searchPublishedBlocks($query)
+    {
+        $blocks = [];
+
+        foreach ($this->blockRepository->getAllPublished() as $block) {
+
+            if (false === stripos($block->getName(), $query)) {
+                continue;
+            }
+
+            $blocks[] = Block::createFromEntity($block);
+        }
+
+        return $blocks;
+    }
+
+    /**
      * @param int $offset
      * @param int $showPerPage
      * @return Block[]
