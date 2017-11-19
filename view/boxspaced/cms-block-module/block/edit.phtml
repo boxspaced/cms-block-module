@@ -1,79 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title></title>
-        <meta name="description" content="" />
-        <meta name="keywords" content="" />
+<?php
+$this->headScript()->appendFile('/ckeditor/ckeditor.js');
+$this->headScript()->appendFile('/ckfinder/ckfinder.js');
+?>
 
-        <link rel="stylesheet" type="text/css" href="/yui/reset/reset-min.css" />
-        <link rel="stylesheet" type="text/css" href="/yui/fonts/fonts-min.css" />
-        <link rel="stylesheet" type="text/css" href="/yui/tabview/assets/skins/sam/tabview.css" />
-        <link rel="stylesheet" type="text/css" href="/yui/button/assets/skins/sam/button.css" />
-        <link rel="stylesheet" type="text/css" href="/yui/menu/assets/skins/sam/menu.css" />
+        <div class="row">
+            <div class="col-md-12">
 
-        <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+                <h1>
+                    Edit<?php echo ($this->titleSuffix) ? ' ' . $this->escapeHtml(strtolower($this->titleSuffix)) : '' ?>
+                    <span class="type"><?php echo $this->escapeHtml($this->typeName) ?></span>
+                    <small><?php echo $this->escapeHtml($this->blockName) ?></small>
+                </h1>
 
-        <script type="text/javascript" src="/yui/utilities/utilities.js"></script>
-        <script type="text/javascript" src="/yui/tabview/tabview-min.js"></script>
-        <script type="text/javascript" src="/yui/container/container-min.js"></script>
-        <script type="text/javascript" src="/yui/menu/menu-min.js"></script>
-        <script type="text/javascript" src="/yui/button/button-min.js"></script>
-        <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
-        <script type="text/javascript" src="/ckfinder/ckfinder.js"></script>
+                <?php
+                $form = $this->form;
+                $form->setAttribute('name', 'main');
+                $form->setAttribute('class', 'form-horizontal');
+                $form->prepare();
+                ?>
 
-        <script type="text/javascript" src="/js/buttons.js"></script>
-        <script type="text/javascript" src="/js/general.js"></script>
-        <script type="text/javascript" src="/js/dynamic_tables.js"></script>
-        <script type="text/javascript" src="/js/calendar.js"></script>
-    </head>
+                <?php echo $this->form()->openTag($form) ?>
 
-    <body class="yui-skin-sam">
+                    <?php echo $this->adminFormElement($form->get('id')) ?>
+                    <?php echo $this->adminFormElement($form->get('partial')) ?>
+                    <?php echo $this->adminFormElement($form->get('token')) ?>
 
-        <div id="top"><!-- Start top area -->
+                    <fieldset>
+                        <legend>Notes</legend>
 
-            <div class="title">Edit<?php echo ($this->titleSuffix) ? ' ' . $this->escapeHtml(strtolower($this->titleSuffix)) : '' ?>:
-            <?php echo $this->escapeHtml($this->typeName) ?> - <i><?php echo $this->escapeHtml($this->blockName) ?></i></div>
-            <?php echo $this->messages() ?>
-            <div class="info"><img src="/images/required_star.png" alt="Required"> indicates required field</div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">&nbsp;</label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">
+                                    <?php if (empty($this->blockNotes)) : ?>
+                                    No notes found
+                                    <?php else : ?>
+                                    <?php foreach ($this->blockNotes as $note) : ?>
+                                    <?php echo $this->date($note->time, 'F j Y H:i') . ' - ' .
+                                    $this->escapeHtml($note->username) . ' - ' .
+                                    $this->escapeHtml($note->text) ?><br />
+                                    <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </p>
+                            </div>
+                        </div>
 
-        </div><!-- End top area -->
+                    </fieldset>
 
-        <?php
-        $form = $this->form;
-        $form->setAttribute('name', 'main')->prepare();
-        ?>
-
-        <?php echo $this->form()->openTag($form) ?>
-
-            <?php echo $this->adminFormElement($form->get('id')) ?>
-            <?php echo $this->adminFormElement($form->get('partial')) ?>
-            <?php echo $this->adminFormElement($form->get('token')) ?>
-
-            <div id="stage"><!-- Start stage area -->
-
-                <div class="white-box"><!-- Start fieldset -->
-                    <div class="white-box-rounded-corner-top"><div></div></div>
-                    <div class="white-box-content">
-                        <div class="white-box-title">Notes</div>
-                        <p>
-                            <?php if (empty($this->blockNotes)) : ?>
-                            No notes found
-                            <?php else : ?>
-                            <?php foreach ($this->blockNotes as $note) : ?>
-                            <?php echo $this->date($note->time, 'F j Y H:i') . ' - ' .
-                            $this->escapeHtml($note->username) . ' - ' .
-                            $this->escapeHtml($note->text) ?><br />
-                            <?php endforeach; ?>
-                            <?php endif; ?>
-                        </p>
-                    </div>
-                </div><!-- End fieldset -->
-
-                <div class="white-box"><!-- Start fieldset -->
-                    <div class="white-box-rounded-corner-top"><div></div></div>
-                    <div class="white-box-content">
-                        <div class="white-box-title">Content</div>
+                    <fieldset>
+                        <legend>Content</legend>
 
                         <?php if ($form->has('fields')) : ?>
                         <?php foreach ($form->get('fields')->getElements() as $element) : ?>
@@ -81,36 +56,32 @@
                         <?php endforeach; ?>
                         <?php endif; ?>
 
-                    </div>
+                    </fieldset>
 
-                </div><!-- End fieldset -->
-            </div><!-- End stage area -->
+                    <fieldset>
+                        <legend>Submit</legend>
 
-                <div class="submit-area">
+                        <?php echo $this->adminFormElement($form->get('note')) ?>
 
-                    <?php echo $this->adminFormElement($form->get('note')) ?>
+                        <div class="form-group">
+                            <div class="col-md-10 col-md-offset-2">
 
-                    <div class="form-element">
-                        <div class="form-inputs line-up">
-                            <?php
-                            $form->get('save')->setAttribute('class', 'button');
-                            echo $this->formElement($form->get('save'));
-                            ?>
+                                    <?php
+                                    $form->get('save')->setAttribute('class', 'btn btn-primary');
+                                    echo $this->formElement($form->get('save'));
+                                    ?>
+
+                                    <?php
+                                    $form->get('publish')->setAttribute('class', 'btn btn-success');
+                                    echo $this->formElement($form->get('publish'));
+                                    ?>
+
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="form-element">
-                        <div class="form-inputs line-up">
-                            <?php
-                            $form->get('publish')->setAttribute('class', 'button');
-                            echo $this->formElement($form->get('publish'));
-                            ?>
-                        </div>
-                    </div>
+                    </fieldset>
 
-                </div>
+                <?php echo $this->form()->closeTag() ?>
 
-        <?php echo $this->form()->closeTag() ?>
-
-    </body>
-</html>
+            </div>
+        </div>

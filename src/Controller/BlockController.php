@@ -11,6 +11,7 @@ use Zend\Paginator;
 use Boxspaced\CmsBlockModule\Form;
 use Boxspaced\CmsAccountModule\Service\AccountService;
 use Boxspaced\CmsWorkflowModule\Service\WorkflowService;
+use Zend\EventManager\EventManagerInterface;
 
 class BlockController extends AbstractActionController
 {
@@ -67,7 +68,19 @@ class BlockController extends AbstractActionController
         $this->config = $config;
 
         $this->view = new ViewModel();
-        $this->view->setTerminal(true);
+    }
+
+    /**
+     * @param EventManagerInterface $events
+     * @return void
+     */
+    public function setEventManager(EventManagerInterface $events)
+    {
+        parent::setEventManager($events);
+        $controller = $this;
+        $events->attach('dispatch', function ($e) use ($controller) {
+            $controller->layout('layout/admin');
+        }, 100);
     }
 
     /**
@@ -75,19 +88,24 @@ class BlockController extends AbstractActionController
      */
     public function indexAction()
     {
-        $adminNavigation = $this->adminNavigationWidget();
-        if (null !== $adminNavigation) {
-            $this->view->addChild($adminNavigation, 'adminNavigation');
-        }
+        $search = $this->params()->fromQuery('search');
 
-        $adapter = new Paginator\Adapter\Callback(
-            function ($offset, $itemCountPerPage) {
-                return $this->blockService->getPublishedBlocks($offset, $itemCountPerPage);
-            },
-            function () {
-                return $this->blockService->countPublishedBlocks();
-            }
-        );
+        if (!empty($search)) {
+
+            $results = $this->blockService->searchPublishedBlocks($search);
+            $adapter = new Paginator\Adapter\ArrayAdapter($results);
+
+        } else {
+
+            $adapter = new Paginator\Adapter\Callback(
+                function ($offset, $itemCountPerPage) {
+                    return $this->blockService->getPublishedBlocks($offset, $itemCountPerPage);
+                },
+                function () {
+                    return $this->blockService->countPublishedBlocks();
+                }
+            );
+        }
 
         $paginator = new Paginator\Paginator($adapter);
         $paginator->setCurrentPageNumber($this->params()->fromQuery('page', 1));
@@ -371,8 +389,8 @@ class BlockController extends AbstractActionController
         }
 
         $publishingOptions->name = $values['name'];
-        $publishingOptions->liveFrom = new DateTime($values['liveFrom']);
-        $publishingOptions->expiresEnd = new DateTime($values['expiresEnd']);
+        $publishingOptions->liveFrom = (new DateTime($values['liveFrom']))->setTime(0, 0, 0);
+        $publishingOptions->expiresEnd = (new DateTime($values['expiresEnd']))->setTime(23, 59, 59);
         $publishingOptions->templateId = $values['templateId'];
 
         $this->blockService->publish($id, $publishingOptions);
@@ -392,6 +410,8 @@ class BlockController extends AbstractActionController
         $form->get('confirm')->setValue('Confirm delete');
 
         $this->view->form = $form;
+
+        $this->layout('layout/dialog');
         $this->view->setTemplate('boxspaced/cms-block-module/block/confirm.phtml');
 
         if (!$this->getRequest()->isPost()) {
@@ -425,6 +445,8 @@ class BlockController extends AbstractActionController
         $form->get('confirm')->setValue('Confirm update');
 
         $this->view->form = $form;
+
+        $this->layout('layout/dialog');
         $this->view->setTemplate('boxspaced/cms-block-module/block/confirm.phtml');
 
         if (!$this->getRequest()->isPost()) {
